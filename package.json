@@ -1,5 +1,5 @@
 {
-  "name": "codec-parser",
+  "name": "codec-parser-commonjs",
   "version": "2.4.3",
   "description": "Library that parses raw data from audio codecs into frames containing data, header values, duration, and other information.",
   "main": "index.js",
@@ -26,8 +26,7 @@
     "url": "git+https://github.com/eshaz/codec-parser.git"
   },
   "author": {
-    "name": "Ethan Halsall",
-    "email": "ethanhalsall@pm.me"
+    "name": "Fork by H. Degroote (Original author: Ethan Halsall)"
   },
   "license": "LGPL-3.0-or-later",
   "bugs": {

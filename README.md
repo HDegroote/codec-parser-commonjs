@@ -1,4 +1,8 @@
-# Codec Parser
+# Codec Parser CommonJS
+
+Disclaimer: this is a fork of https://github.com/eshaz/codec-parser. You almost certainly want to use the original. This fork was created to be able to import codec-parser as a commonjs module, so it can be used in webpack. My usecase only involves FLAC, so I got rid of all code related to other codecs. No other changes were made. All credit (and copyright) for this library goes to the original author, Ethan Halsall, as indicated by the copyright notices left unchanged from the original repository.
+
+What follows is the original README.
 
 `codec-parser` is a JavaScript library that parses raw data from audio codecs into frames containing data, header values, duration, and other information.
 
