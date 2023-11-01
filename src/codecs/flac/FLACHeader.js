@@ -47,7 +47,7 @@ L   8   CRC-8 (polynomial = x^8 + x^2 + x^1 + x^0, initialized with 0) of everyt
         
 */
 
-import {
+const {
   reserved,
   bad,
   rate88200,
@@ -88,9 +88,9 @@ import {
   getHeader,
   setHeader,
   getHeaderFromUint8Array,
-} from "../../constants.js";
-import { bytesToString, crc8 } from "../../utilities.js";
-import CodecHeader from "../CodecHeader.js";
+} = require("../../constants.js");
+const { bytesToString, crc8 } = require("../../utilities.js");
+const CodecHeader = require("../CodecHeader.js");
 
 const getFromStreamInfo = "get from STREAMINFO metadata block";
 
@@ -180,7 +180,7 @@ const bitDepthValues = {
   0b00001110: reserved,
 };
 
-export default class FLACHeader extends CodecHeader {
+module.exports = class FLACHeader extends CodecHeader {
   // https://datatracker.ietf.org/doc/html/rfc3629#section-3
   //    Char. number range  |        UTF-8 octet sequence
   //    (hexadecimal)    |              (binary)

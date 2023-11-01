@@ -36,7 +36,7 @@ const symbol = Symbol;
 
 const mappingJoin = ", ";
 
-export const channelMappings = (() => {
+const channelMappings = (() => {
   const front = "front";
   const side = "side";
   const rear = "rear";
@@ -55,12 +55,12 @@ export const channelMappings = (() => {
   );
 })();
 
-export const lfe = "LFE";
-export const monophonic = "monophonic (mono)";
-export const stereo = "stereo";
+const lfe = "LFE";
+const monophonic = "monophonic (mono)";
+const stereo = "stereo";
 const surround = "surround";
 
-export const getChannelMapping = (channelCount, ...mappings) =>
+const getChannelMapping = (channelCount, ...mappings) =>
   `${
     [
       monophonic,
@@ -75,7 +75,7 @@ export const getChannelMapping = (channelCount, ...mappings) =>
   } (${mappings.join(mappingJoin)})`;
 
 // prettier-ignore
-export const vorbisOpusChannelMapping = [
+const vorbisOpusChannelMapping = [
   monophonic,
   getChannelMapping(2,channelMappings[0][0]),
   getChannelMapping(3,channelMappings[0][2]),
@@ -87,151 +87,284 @@ export const vorbisOpusChannelMapping = [
 ]
 
 // sampleRates
-export const rate192000 = 192000;
-export const rate176400 = 176400;
-export const rate96000 = 96000;
-export const rate88200 = 88200;
-export const rate64000 = 64000;
-export const rate48000 = 48000;
-export const rate44100 = 44100;
-export const rate32000 = 32000;
-export const rate24000 = 24000;
-export const rate22050 = 22050;
-export const rate16000 = 16000;
-export const rate12000 = 12000;
-export const rate11025 = 11025;
-export const rate8000 = 8000;
-export const rate7350 = 7350;
+const rate192000 = 192000;
+const rate176400 = 176400;
+const rate96000 = 96000;
+const rate88200 = 88200;
+const rate64000 = 64000;
+const rate48000 = 48000;
+const rate44100 = 44100;
+const rate32000 = 32000;
+const rate24000 = 24000;
+const rate22050 = 22050;
+const rate16000 = 16000;
+const rate12000 = 12000;
+const rate11025 = 11025;
+const rate8000 = 8000;
+const rate7350 = 7350;
 
 // header key constants
-export const absoluteGranulePosition = "absoluteGranulePosition";
-export const bandwidth = "bandwidth";
-export const bitDepth = "bitDepth";
-export const bitrate = "bitrate";
-export const bitrateMaximum = bitrate + "Maximum";
-export const bitrateMinimum = bitrate + "Minimum";
-export const bitrateNominal = bitrate + "Nominal";
-export const buffer = "buffer";
-export const bufferFullness = buffer + "Fullness";
-export const codec = "codec";
-export const codecFrames = codec + "Frames";
-export const coupledStreamCount = "coupledStreamCount";
-export const crc = "crc";
-export const crc16 = crc + "16";
-export const crc32 = crc + "32";
-export const data = "data";
-export const description = "description";
-export const duration = "duration";
-export const emphasis = "emphasis";
-export const hasOpusPadding = "hasOpusPadding";
-export const header = "header";
-export const isContinuedPacket = "isContinuedPacket";
-export const isCopyrighted = "isCopyrighted";
-export const isFirstPage = "isFirstPage";
-export const isHome = "isHome";
-export const isLastPage = "isLastPage";
-export const isOriginal = "isOriginal";
-export const isPrivate = "isPrivate";
-export const isVbr = "isVbr";
-export const layer = "layer";
-export const length = "length";
-export const mode = "mode";
-export const modeExtension = mode + "Extension";
-export const mpeg = "mpeg";
-export const mpegVersion = mpeg + "Version";
-export const numberAACFrames = "numberAAC" + "Frames";
-export const outputGain = "outputGain";
-export const preSkip = "preSkip";
-export const profile = "profile";
-export const profileBits = symbol();
-export const protection = "protection";
-export const rawData = "rawData";
-export const segments = "segments";
-export const subarray = "subarray";
-export const version = "version";
-export const vorbis = "vorbis";
-export const vorbisComments = vorbis + "Comments";
-export const vorbisSetup = vorbis + "Setup";
+const absoluteGranulePosition = "absoluteGranulePosition";
+const bandwidth = "bandwidth";
+const bitDepth = "bitDepth";
+const bitrate = "bitrate";
+const bitrateMaximum = bitrate + "Maximum";
+const bitrateMinimum = bitrate + "Minimum";
+const bitrateNominal = bitrate + "Nominal";
+const buffer = "buffer";
+const bufferFullness = buffer + "Fullness";
+const codec = "codec";
+const codecFrames = codec + "Frames";
+const coupledStreamCount = "coupledStreamCount";
+const crc = "crc";
+const crc16 = crc + "16";
+const crc32 = crc + "32";
+const data = "data";
+const description = "description";
+const duration = "duration";
+const emphasis = "emphasis";
+const hasOpusPadding = "hasOpusPadding";
+const header = "header";
+const isContinuedPacket = "isContinuedPacket";
+const isCopyrighted = "isCopyrighted";
+const isFirstPage = "isFirstPage";
+const isHome = "isHome";
+const isLastPage = "isLastPage";
+const isOriginal = "isOriginal";
+const isPrivate = "isPrivate";
+const isVbr = "isVbr";
+const layer = "layer";
+const length = "length";
+const mode = "mode";
+const modeExtension = mode + "Extension";
+const mpeg = "mpeg";
+const mpegVersion = mpeg + "Version";
+
+const numberAACFrames = "numberAAC" + "Frames";
+const outputGain = "outputGain";
+const preSkip = "preSkip";
+const profile = "profile";
+const profileBits = symbol();
+const protection = "protection";
+const rawData = "rawData";
+const segments = "segments";
+const subarray = "subarray";
+const version = "version";
+const vorbis = "vorbis";
+const vorbisComments = vorbis + "Comments";
+const vorbisSetup = vorbis + "Setup";
 
 const block = "block";
-export const blockingStrategy = block + "ingStrategy";
-export const blockingStrategyBits = symbol();
-export const blockSize = block + "Size";
-export const blocksize0 = block + "size0";
-export const blocksize1 = block + "size1";
-export const blockSizeBits = symbol();
+const blockingStrategy = block + "ingStrategy";
+const blockingStrategyBits = symbol();
+const blockSize = block + "Size";
+const blocksize0 = block + "size0";
+const blocksize1 = block + "size1";
+const blockSizeBits = symbol();
 
 const channel = "channel";
-export const channelMappingFamily = channel + "MappingFamily";
-export const channelMappingTable = channel + "MappingTable";
-export const channelMode = channel + "Mode";
-export const channelModeBits = symbol();
-export const channels = channel + "s";
+const channelMappingFamily = channel + "MappingFamily";
+const channelMappingTable = channel + "MappingTable";
+const channelMode = channel + "Mode";
+const channelModeBits = symbol();
+const channels = channel + "s";
 
 const copyright = "copyright";
-export const copyrightId = copyright + "Id";
-export const copyrightIdStart = copyright + "IdStart";
+const copyrightId = copyright + "Id";
+const copyrightIdStart = copyright + "IdStart";
 
-export const frame = "frame";
-export const frameCount = frame + "Count";
-export const frameLength = frame + "Length";
+const frame = "frame";
+const frameCount = frame + "Count";
+const frameLength = frame + "Length";
 
 const Number = "Number";
-export const frameNumber = frame + Number;
-export const framePadding = frame + "Padding";
-export const frameSize = frame + "Size";
+const frameNumber = frame + Number;
+const framePadding = frame + "Padding";
+const frameSize = frame + "Size";
 
 const Rate = "Rate";
-export const inputSampleRate = "inputSample" + Rate;
+const inputSampleRate = "inputSample" + Rate;
 
 const page = "page";
-export const pageChecksum = page + "Checksum";
-export const pageSegmentBytes = symbol();
-export const pageSegmentTable = page + "SegmentTable";
-export const pageSequenceNumber = page + "Sequence" + Number;
+const pageChecksum = page + "Checksum";
+const pageSegmentBytes = symbol();
+const pageSegmentTable = page + "SegmentTable";
+const pageSequenceNumber = page + "Sequence" + Number;
 
 const sample = "sample";
-export const sampleNumber = sample + Number;
-export const sampleRate = sample + Rate;
-export const sampleRateBits = symbol();
-export const samples = sample + "s";
+const sampleNumber = sample + Number;
+const sampleRate = sample + Rate;
+const sampleRateBits = symbol();
+const samples = sample + "s";
 
 const stream = "stream";
-export const streamCount = stream + "Count";
-export const streamInfo = stream + "Info";
-export const streamSerialNumber = stream + "Serial" + Number;
-export const streamStructureVersion = stream + "StructureVersion";
+const streamCount = stream + "Count";
+const streamInfo = stream + "Info";
+const streamSerialNumber = stream + "Serial" + Number;
+const streamStructureVersion = stream + "StructureVersion";
 
 const total = "total";
-export const totalBytesOut = total + "BytesOut";
-export const totalDuration = total + "Duration";
-export const totalSamples = total + "Samples";
+const totalBytesOut = total + "BytesOut";
+const totalDuration = total + "Duration";
+const totalSamples = total + "Samples";
 
 // private methods
-export const readRawData = symbol();
-export const incrementRawData = symbol();
-export const mapCodecFrameStats = symbol();
-export const mapFrameStats = symbol();
-export const logWarning = symbol();
-export const logError = symbol();
-export const syncFrame = symbol();
-export const fixedLengthFrameSync = symbol();
-export const getHeader = symbol();
-export const setHeader = symbol();
-export const getFrame = symbol();
-export const parseFrame = symbol();
-export const parseOggPage = symbol();
-export const checkCodecUpdate = symbol();
-export const reset = symbol();
-export const enable = symbol();
-export const getHeaderFromUint8Array = symbol();
-export const checkFrameFooterCrc16 = symbol();
+const readRawData = symbol();
+const incrementRawData = symbol();
+const mapCodecFrameStats = symbol();
+const mapFrameStats = symbol();
+const logWarning = symbol();
+const logError = symbol();
+const syncFrame = symbol();
+const fixedLengthFrameSync = symbol();
+const getHeader = symbol();
+const setHeader = symbol();
+const getFrame = symbol();
+const parseFrame = symbol();
+const parseOggPage = symbol();
+const checkCodecUpdate = symbol();
+const reset = symbol();
+const enable = symbol();
+const getHeaderFromUint8Array = symbol();
+const checkFrameFooterCrc16 = symbol();
 
-export const uint8Array = Uint8Array;
-export const dataView = DataView;
+const uint8Array = Uint8Array;
+const dataView = DataView;
 
-export const reserved = "reserved";
-export const bad = "bad";
-export const free = "free";
-export const none = "none";
-export const sixteenBitCRC = "16bit CRC";
+const reserved = "reserved";
+const bad = "bad";
+const free = "free";
+const none = "none";
+const sixteenBitCRC = "16bit CRC";
+
+module.exports = {
+  channelMappings,
+  lfe,
+  monophonic,
+  stereo,
+  getChannelMapping,
+  vorbisOpusChannelMapping,
+  rate192000,
+  rate176400,
+  rate96000,
+  rate88200,
+  rate64000,
+  rate48000,
+  rate44100,
+  rate32000,
+  rate24000,
+  rate22050,
+  rate16000,
+  rate12000,
+  rate11025,
+  rate8000,
+  rate7350,
+  absoluteGranulePosition,
+  bandwidth,
+  bitDepth,
+  bitrate,
+  bitrateMaximum,
+  bitrateMinimum,
+  bitrateNominal,
+  buffer,
+  bufferFullness,
+  codec,
+  codecFrames,
+  coupledStreamCount,
+  crc,
+  crc16,
+  crc32,
+  data,
+  description,
+  duration,
+  emphasis,
+  hasOpusPadding,
+  header,
+  isContinuedPacket,
+  isCopyrighted,
+  isFirstPage,
+  isHome,
+  isLastPage,
+  isOriginal,
+  isPrivate,
+  isVbr,
+  layer,
+  length,
+  mode,
+  modeExtension,
+  mpeg,
+  mpegVersion,
+  numberAACFrames,
+  outputGain,
+  preSkip,
+  profile,
+  profileBits,
+  protection,
+  rawData,
+  segments,
+  subarray,
+  version,
+  vorbis,
+  vorbisComments,
+  vorbisSetup,
+  blockingStrategy,
+  blockingStrategyBits,
+  blockSize,
+  blocksize0,
+  blocksize1,
+  blockSizeBits,
+  channelMappingFamily,
+  channelMappingTable,
+  channelMode,
+  channelModeBits,
+  channels,
+  copyrightId,
+  copyrightIdStart,
+  frame,
+  frameCount,
+  frameLength,
+  frameNumber,
+  framePadding,
+  frameSize,
+  inputSampleRate,
+  pageChecksum,
+  pageSegmentBytes,
+  pageSegmentTable,
+  pageSequenceNumber,
+  sampleNumber,
+  sampleRate,
+  sampleRateBits,
+  samples,
+  streamCount,
+  streamInfo,
+  streamSerialNumber,
+  streamStructureVersion,
+  totalBytesOut,
+  totalDuration,
+  totalSamples,
+  readRawData,
+  incrementRawData,
+  mapCodecFrameStats,
+  mapFrameStats,
+  logWarning,
+  logError,
+  syncFrame,
+  fixedLengthFrameSync,
+  getHeader,
+  setHeader,
+  getFrame,
+  parseFrame,
+  parseOggPage,
+  checkCodecUpdate,
+  reset,
+  enable,
+  getHeaderFromUint8Array,
+  checkFrameFooterCrc16,
+  uint8Array,
+  dataView,
+  reserved,
+  bad,
+  free,
+  none,
+  sixteenBitCRC
+}

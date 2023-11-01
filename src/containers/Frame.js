@@ -16,13 +16,13 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>
 */
 
-import { frameStore } from "../globals.js";
-import { data, header } from "../constants.js";
+const { frameStore } = require("../globals.js");
+const { data, header } = require("../constants.js");
 
 /**
  * @abstract
  */
-export default class Frame {
+module.exports = class Frame {
   constructor(headerValue, dataValue) {
     frameStore.set(this, { [header]: headerValue });
 

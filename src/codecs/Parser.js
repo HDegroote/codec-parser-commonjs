@@ -16,8 +16,8 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>
 */
 
-import { frameStore } from "../globals.js";
-import {
+const { frameStore } = require("../globals.js");
+const {
   frame,
   length,
   incrementRawData,
@@ -29,13 +29,13 @@ import {
   getHeader,
   reset,
   enable,
-} from "../constants.js";
+} = require("../constants.js");
 
 /**
  * @abstract
  * @description Abstract class containing methods for parsing codec frames
  */
-export default class Parser {
+module.exports = class Parser {
   constructor(codecParser, headerCache) {
     this._codecParser = codecParser;
     this._headerCache = headerCache;

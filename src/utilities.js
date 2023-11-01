@@ -16,7 +16,7 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>
 */
 
-import { length, uint8Array } from "./constants.js";
+const { length, uint8Array } = require("./constants.js");
 
 const getCrcTable = (crcTable, crcInitialValueFunction, crcFunction) => {
   for (let byte = 0; byte < crcTable[length]; byte++) {
@@ -185,7 +185,7 @@ class BitReader {
   }
 }
 
-export {
+module.exports = {
   crc8,
   flacCrc16,
   crc32Function,
