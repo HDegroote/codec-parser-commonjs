@@ -16,19 +16,19 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>
 */
 
-import { headerStore } from "../../globals.js";
-import { flacCrc16 } from "../../utilities.js";
-import {
+const { headerStore } = require("../../globals.js");
+const { flacCrc16 } = require("../../utilities.js");
+const {
   length,
   streamInfo,
   crc16,
   samples,
   subarray,
   checkFrameFooterCrc16,
-} from "../../constants.js";
-import CodecFrame from "../CodecFrame.js";
+} = require("../../constants.js");
+const CodecFrame = require("../CodecFrame.js");
 
-export default class FLACFrame extends CodecFrame {
+module.exports = class FLACFrame extends CodecFrame {
   static _getFrameFooterCrc16(data) {
     return (data[data[length] - 2] << 8) + data[data[length] - 1];
   }

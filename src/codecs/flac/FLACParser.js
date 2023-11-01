@@ -16,8 +16,8 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>
 */
 
-import { frameStore, headerStore } from "../../globals.js";
-import {
+const { frameStore, headerStore } = require("../../globals.js");
+const {
   length,
   pageSequenceNumber,
   data,
@@ -35,15 +35,15 @@ import {
   enable,
   checkFrameFooterCrc16,
   getHeaderFromUint8Array,
-} from "../../constants.js";
-import Parser from "../Parser.js";
-import FLACFrame from "./FLACFrame.js";
-import FLACHeader from "./FLACHeader.js";
+} = require("../../constants.js");
+const Parser = require("../Parser.js");
+const FLACFrame = require("./FLACFrame.js");
+const FLACHeader = require("./FLACHeader.js");
 
 const MIN_FLAC_FRAME_SIZE = 2;
 const MAX_FLAC_FRAME_SIZE = 512 * 1024;
 
-export default class FLACParser extends Parser {
+module.exports = class FLACParser extends Parser {
   constructor(codecParser, headerCache, onCodec) {
     super(codecParser, headerCache);
     this.Frame = FLACFrame;
