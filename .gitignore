@@ -2,3 +2,4 @@ node_modules
 test-results.txt
 coverage
 actual-results/
+package-lock.json
