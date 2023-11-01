@@ -1,2 +1,4 @@
-export const headerStore = new WeakMap();
-export const frameStore = new WeakMap();
+module.exports = {
+  headerStore: new WeakMap(),
+  frameStore: new WeakMap()
+}

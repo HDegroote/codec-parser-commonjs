@@ -16,15 +16,15 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>
 */
 
-import {
+const {
   getHeader,
   setHeader,
   checkCodecUpdate,
   reset,
   enable,
-} from "../constants.js";
+} = require("../constants.js");
 
-export default class HeaderCache {
+module.exports = class HeaderCache {
   constructor(onCodecHeader, onCodecUpdate) {
     this._onCodecHeader = onCodecHeader;
     this._onCodecUpdate = onCodecUpdate;

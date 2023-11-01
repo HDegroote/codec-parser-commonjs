@@ -16,16 +16,16 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>
 */
 
-import { headerStore } from "../globals.js";
-import {
+const { headerStore } = require("../globals.js");
+const {
   bitDepth,
   channelMode,
   sampleRate,
   bitrate,
   channels,
-} from "../constants.js";
+} = require("../constants.js");
 
-export default class CodecHeader {
+module.exports = class CodecHeader {
   /**
    * @private
    */

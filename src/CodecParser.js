@@ -16,8 +16,8 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>
 */
 
-import { crc32Function, concatBuffers } from "./utilities.js";
-import {
+const { crc32Function, concatBuffers } = require("./utilities.js");
+const {
   header,
   sampleRate,
   bitrate,
@@ -42,16 +42,13 @@ import {
   parseFrame,
   checkCodecUpdate,
   reset,
-} from "./constants.js";
-import HeaderCache from "./codecs/HeaderCache.js";
-import MPEGParser from "./codecs/mpeg/MPEGParser.js";
-import AACParser from "./codecs/aac/AACParser.js";
-import FLACParser from "./codecs/flac/FLACParser.js";
-import OggParser from "./containers/ogg/OggParser.js";
+} = require("./constants.js");
+const HeaderCache = require("./codecs/HeaderCache.js");
+const FLACParser = require("./codecs/flac/FLACParser.js");
 
 const noOp = () => {};
 
-export default class CodecParser {
+module.exports = class CodecParser {
   constructor(
     mimeType,
     {
@@ -139,14 +136,8 @@ export default class CodecParser {
    * @private
    */
   *_getGenerator() {
-    if (this._inputMimeType.match(/aac/)) {
-      this._parser = new AACParser(this, this._headerCache, this._onCodec);
-    } else if (this._inputMimeType.match(/mpeg/)) {
-      this._parser = new MPEGParser(this, this._headerCache, this._onCodec);
-    } else if (this._inputMimeType.match(/flac/)) {
+    if (this._inputMimeType.match(/flac/)) {
       this._parser = new FLACParser(this, this._headerCache, this._onCodec);
-    } else if (this._inputMimeType.match(/ogg/)) {
-      this._parser = new OggParser(this, this._headerCache, this._onCodec);
     } else {
       throw new Error(`Unsupported Codec ${mimeType}`);
     }

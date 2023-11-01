@@ -16,8 +16,8 @@
     along with this program.  If not, see <https://www.gnu.org/licenses/>
 */
 
-import { frameStore, headerStore } from "../globals.js";
-import {
+const { frameStore, headerStore } = require("../globals.js");
+const {
   sampleRate,
   length,
   frameNumber,
@@ -32,10 +32,10 @@ import {
   readRawData,
   getFrame,
   getHeader,
-} from "../constants.js";
-import Frame from "../containers/Frame.js";
+} = require("../constants.js");
+const Frame = require("../containers/Frame.js");
 
-export default class CodecFrame extends Frame {
+module.exports = class CodecFrame extends Frame {
   static *[getFrame](Header, Frame, codecParser, headerCache, readOffset) {
     const headerValue = yield* Header[getHeader](
       codecParser,
