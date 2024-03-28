@@ -44,6 +44,7 @@ const {
   reset,
 } = require("./constants.js");
 const HeaderCache = require("./codecs/HeaderCache.js");
+const MPEGParser = require("./codecs/mpeg/MPEGParser.js");
 const FLACParser = require("./codecs/flac/FLACParser.js");
 
 const noOp = () => {};
@@ -136,7 +137,9 @@ module.exports = class CodecParser {
    * @private
    */
   *_getGenerator() {
-    if (this._inputMimeType.match(/flac/)) {
+    if (this._inputMimeType.match(/mpeg/)) {
+      this._parser = new MPEGParser(this, this._headerCache, this._onCodec);
+    } else if (this._inputMimeType.match(/flac/)) {
       this._parser = new FLACParser(this, this._headerCache, this._onCodec);
     } else {
       throw new Error(`Unsupported Codec ${mimeType}`);
